@@ -6,7 +6,7 @@ Param(
   $SiteName,
   $SiteNamePool
 )
-if ([bool]$RemoteLocation -eq 0) {Write-error "Ohh shit. Send me full destination path on remote server. Quickly!"; Exit}
+if ([bool]$RemoteLocation -eq 0) {Write-error "Ohh shit. Please send me full destination path on remote server. Quickly!"; Exit}
 #prepare create PSSession
 $pwd = convertto-securestring "$RemoteUserPass" -asplaintext -force
 $cred=New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList "$RemoteUser",$pwd
