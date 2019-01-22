@@ -20,8 +20,8 @@ else {
 exit 
 }
 #Stop-Website on IIS
-$StopSite = {Stop-WebSite $args[0]};  
-Invoke-Command -ScriptBlock $StopSite -ArgumentList $SiteName -Session $SessionRemotly;
+#$StopSite = {Stop-WebSite $args[0]};  #If you use SQL
+#Invoke-Command -ScriptBlock $StopSite -ArgumentList $SiteName -Session $SessionRemotly; 
 $StopSitePool = {Stop-WebAppPool $args[0]};  
 Invoke-Command -ScriptBlock $StopSitePool -ArgumentList $SiteNamePool -Session $SessionRemotly;
 sleep -s 15
@@ -42,8 +42,8 @@ Invoke-Command -ScriptBlock {& 'C:\Program Files\7-Zip\7z.exe' x %env.destserver
 Invoke-Command -ScriptBlock {Remove-Item %env.destserverpath%archive.zip -Force} -Session $sessionremotly
 sleep -s 5
 #Start-Website on IIS
-$StartSite = {Start-WebSite $args[0]};  
-Invoke-Command -ScriptBlock $StartSite -ArgumentList $SiteName -Session $SessionRemotly;
+#$StartSite = {Start-WebSite $args[0]};  
+#Invoke-Command -ScriptBlock $StartSite -ArgumentList $SiteName -Session $SessionRemotly;
 $StartSitePool = {Start-WebAppPool $args[0]};  
 Invoke-Command -ScriptBlock $StartSitePool -ArgumentList $SiteNamePool -Session $SessionRemotly;
 
